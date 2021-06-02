@@ -31,6 +31,11 @@ export default {
           text: 'Resume',
           page:'/Resume'
         },
+        {
+          id: 3,
+          text: 'Algorithms',
+          page:'/Algorithms'
+        },
       ]
     }
   }

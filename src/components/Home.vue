@@ -26,6 +26,8 @@ export default {
     }
   }
 }
+
+
   window.watsonAssistantChatOptions = {
       integrationID: "ad674d02-614b-4a8d-ad12-a8d24f4812cf", // The ID of this integration.
       region: "us-south", // The region your integration is hosted in.
