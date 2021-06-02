@@ -22,17 +22,14 @@
         </p>
         <p>Prims Minimum Spanning Tree algorithm in action. Fill in the inputs and interact to see how the algorithm works!</p>
         <input placeholder="How many vertices?" v-model="n"><p>Click to see Prims run on a graph with {{ n }} vertices.</p>
-        <button type="button" @click="createGraph">Click me!</button>
-
+        <button type="button" @click="createGraph">See the Graph!</button>
+        <button type="button" @click="primsMST">Run Prims</button>
         <canvas id="myCanvas" height="600" width="800">
              Your browser does not support the canvas element.
         </canvas>
     </div>
 </template>
-<script src="priority-queue.js"></script>
 <script>
-import PriorityQueue from '../priority-queue';
-
 export default {
     name: 'Prims',
     data() {
@@ -46,15 +43,18 @@ export default {
             radius: 10,
             n: 0,
             m: 0,
-            unvisColor: "rgb(1,0,0)",
-            visColor: "rgb(0,0,1)",
+            unvisColor: "red",
+            visColor: "blue",
         }
     },
     methods: {
         createGraph() { 
             var canvas = document.getElementById("myCanvas");
             var ctx = canvas.getContext("2d");
-            ctx.restore();
+            ctx.clearRect(0, 0, this.width, this.height);
+
+            this.graph.nodes = []
+            this.graph.edges = []
 
             for(var i = 0; i < this.n; i ++) {
                 var x = Math.random()*this.width;
@@ -67,30 +67,39 @@ export default {
                         "adj": []
                     }
                 this.graph.nodes.push(v);
-                this.drawVert(v, ctx);
+                this.drawVert(v, false);
             }
             this.graph.nodes.forEach((n, i) => { 
                 for(var j = 0; j < this.graph.nodes.length; j++){
                     if(i != j) {
-                        var cost = Math.random() * 10;
+                        var ux = this.graph.nodes[j].x;
+                        var vx = this.graph.nodes[i].x;
+                        var uy = this.graph.nodes[j].y;
+                        var vy = this.graph.nodes[i].y;
+                
+                        var weight = ((ux - vx)**2 + (uy - vy)**2)**0.5
+                        
                         var e = { 
                         "head": n.id,
                         "tail": this.graph.nodes[j].id,
-                        "cost": cost,
+                        "cost": weight,
                         "visited": false
                         }
                         this.graph.edges.push(e);
                         this.addWeightedEdge(n, this.graph.nodes[j], e);
-                        this.drawEdge(n, this.graph.nodes[j], e, ctx);
+                        this.drawEdge(n, this.graph.nodes[j], ctx, false);
                     }
                 }
             });
 
         },
-        drawVert(v, ctx) {
+        drawVert(v, visited) {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+
             ctx.moveTo(v.x, v.y);
             ctx.arc(v.x, v.y, this.radius, 0, 2*Math.PI);
-            if(v.visited) {
+            if(visited) {
                 ctx.fillStyle = this.visColor;
             }
             else {
@@ -98,57 +107,91 @@ export default {
             }
             ctx.fill();
         },
-        drawEdge(v, u, e, ctx) {
+        drawEdge(v, u, ctx, visited) {
             ctx.beginPath();
             ctx.moveTo(v.x, v.y);
-            ctx.lineTo(u.x, u.y);
-            if(e.visited) {
-                ctx.fillStyle = this.visColor;
+            if(visited) {
+                ctx.strokeStyle = this.visColor;
             }
             else {
-                ctx.fillStyle = this.unvisColor;
+                ctx.strokeStyle = this.unvisColor;
             }
+            ctx.lineTo(u.x, u.y);
             ctx.stroke();
         },
         addWeightedEdge(u, v, e) {
-            console.log(this.graph.nodes)
             this.graph.nodes[u.id].adj.push(e)
             this.graph.nodes[v.id].adj.push(e)
         },
         primsMST() {
-            var ePrime = []
+            var ePrime = {}
             var par = {}
             var key = {}
-
-            Q = PriorityQueue();
 
             this.graph.nodes.forEach((n, i) => { 
                 par[i] = "None";
                 key[i] = Number.MAX_VALUE;
+                ePrime[i] = false
+            });
+            key[0] = 0;
+            par[0] = -1;
+            this.drawVert(this.graph.nodes[0], true);
 
-                if(i != len(this.graph.nodes)){
-                    Q.enqueue(i, key[i])
+            for(var j = 0; j < this.n - 1; j ++) {
+                var u = this.minKey(key, ePrime);
+                
+                ePrime[u] = true;
+                this.drawVert(this.graph.nodes[u], true)
+                
+                if(u != -1) {
+                    this.graph.nodes[u].adj.forEach((e, i) => {
+                        if(u == e.head) {  
+                            var v = e.tail;
+                        }
+                        else {
+                            var v = e.head;
+                        }
+                        if(e.cost < key[v] && ePrime[v] == false){
+                            par[v] = u
+                            key[v] = e.cost
+                        }
+                    });
                 }
                 else {
-                    Q.enqueue(i, -1)
+                    var j = this.n
                 }
-            });
+            }
+            
+            this.drawNewEdges(par); 
+            var last = this.graph.nodes.length - 1;
+            
+            this.drawVert(this.graph.nodes[last], true);
 
-            while(!Q.isEmpty()){
-                var u = Q.extract_min() 
-                if(par[u] != "None"){
-                    ePrime.append(WtEdge(par[u], u, tempKey));
+        },
+        minKey(key, ePrime) {
+            var min = Number.MAX_VALUE 
+            var min_index = -1;
+            
+            for (var v = 0; v < this.n; v++) {
+                if (ePrime[v] === false && key[v] < min) {
+                    min = key[v];
+                    min_index = v;
                 }
-                this.graph.nodes[u].adj.forEach((e, i) => {
-                    v = e.head
-                    if(e.cost < key[v]){
-                        par[v] = u
-                        key[v] = e.cost
-                        Q.decr_key(v, e.cost)
+            }
+            return min_index;
+        },
+        drawNewEdges(par) {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            for(var j = 0; j < this.n; j++) {
+                this.graph.edges.forEach((e, i) => {
+                    if(e.head == par[j] && e.tail == j) {  
+                        var u = this.graph.nodes[par[j]];
+                        var v = this.graph.nodes[j];
+                        this.drawEdge(u, v, ctx, true)
                     }
                 });
             }
-
         }
 
     }
@@ -167,6 +210,7 @@ button {
     width: 90px;
     height: 40px; 
     margin: 0 16px 16px 16px;
+    font-size: 82%;
 }
 canvas { 
     width: 800px;
