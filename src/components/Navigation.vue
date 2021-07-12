@@ -36,6 +36,11 @@ export default {
           text: 'Algorithms',
           page:'/Algorithms'
         },
+        {
+          id: 4,
+          text: 'ISP',
+          page:'/independent-study'
+        },
       ]
     }
   }

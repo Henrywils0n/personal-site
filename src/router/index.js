@@ -5,6 +5,7 @@ import Home from '../components/Home'
 import Projects from '../components/Projects'
 import Resume from '../components/Resume'
 import Prims from '../components/Prims'
+import ISP from '../components/ISP'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/algorithms',
       name: 'Prims',
       component: Prims
+    },
+    {
+      path: '/independent-study',
+      name: 'ISP',
+      component: ISP
     }
   ]
 })

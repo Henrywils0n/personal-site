@@ -103,11 +103,13 @@ export default {
                         }
                         this.graph.edges.push(e);
                         this.addWeightedEdge(n, this.graph.nodes[j], e);
-                        this.drawEdge(n, this.graph.nodes[j], ctx, weight, false);
+                        this.drawEdge(n, this.graph.nodes[j], weight, false);
                     }
                 }
             });
-            this.initialized = true;
+            if(this.n > 1) {
+                this.initialized = true;
+            }
 
         },
         drawVert(v, visited) {
@@ -124,7 +126,9 @@ export default {
             }
             ctx.fill();
         },
-        drawEdge(v, u, ctx, weight, visited) {
+        drawEdge(v, u, weight, visited) {
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
             ctx.beginPath();
             ctx.moveTo(v.x, v.y);
             if(visited) {
@@ -206,8 +210,6 @@ export default {
             return min_index;
         },
         drawMST(par) {
-            var canvas = document.getElementById("myCanvas");
-            var ctx = canvas.getContext("2d");
             var mstCost = 0;
             for(var j = 0; j < this.n; j++) {
                 this.graph.edges.forEach((e, i) => {
@@ -215,10 +217,13 @@ export default {
                         var u = this.graph.nodes[par[j]];
                         var v = this.graph.nodes[j];
                         mstCost = mstCost + e.cost;
-                        this.drawEdge(u, v, ctx, e.cost, true)
+                        this.drawEdge(u, v, e.cost, true)
                     }
                 });
             }
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+
             ctx.font = "lighter 16px Arial";
             var cPrint = mstCost.toFixed(2);
             ctx.strokeStyle = "black";
