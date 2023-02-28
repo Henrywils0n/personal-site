@@ -17,7 +17,7 @@ export default {
             otherExperiences: [
                 {
                 id: 0,
-                jobTitle: 'Director of Chapter Events at Alpha Phi Sorority',
+                jobTitle: 'Director of Chapter Events at Alpha Phi Sorority (Iota Kappa Chapter)',
                 jobDescription: 'hi'
                 },
                 {
@@ -37,7 +37,7 @@ export default {
                 },
                 {
                 id: 4,
-                jobTitle: 'Member of the Dartmouth Entrepreneurship LLC',
+                jobTitle: 'Former member of the Dartmouth Entrepreneurship LLC',
                 jobDescription: 'hi'
                 },
                     {

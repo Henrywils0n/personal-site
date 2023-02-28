@@ -242,12 +242,33 @@ export default {
     align-items: center;
     flex-direction: column;
 }
-button { 
-    width: 90px;
-    height: 40px; 
-    margin: 0 16px 16px 16px;
-    font-size: 82%;
+
+button {
+  background-color: #3777ff;
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 5%;
 }
+
+button {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #3777ff;
+}
+
+button:hover {
+  background-color: #3777ff;
+  color: white;
+}
+
 canvas { 
     width: 800px;
     height: 600px;

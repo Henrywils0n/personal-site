@@ -2,11 +2,45 @@
   <div>
     <h1>Projects I've been working on...</h1>
   <p>
-    If you want to check out the code behind the magic, take a look at <a href="https://github.com/ediewilson">my Github!</a>
+    If you want to check out the code behind the magic, take a look at <a href="https://github.com/ediewilson">my Github</a>!
   </p>
   <div class="tempo">
     <h2>This Site!</h2>
-    <p>This site is a work in progress, and I'll update it with new projects as I get to them. As of right now (winter term 2021), I'm in a Security and Privacy class, and a Discrete Mathmatics in Computer Science class.</p>
+    <p>This site is a work in progress, and I'll try to keep it updated with new projects. This winter (2022), I'm going to be finishing up my senior computer science project, taking machine learning & statistical analysis, and a class about arctic environmental change.</p>
+  </div>
+  <div class="tempo">
+    <h2>GitBetter</h2>
+    <p>For my senior design and implementation project (COSC 98.01 at Dartmouth College), I'm currently creating a Github assistant tool called GitBetter. GitBetter is a platform where users can hook up their project repository and test various git commands to see the effects that the commands would have on their project's status. Through GitBetter, you will be able to walk through various commands and visualize the effects the command has on your code. I worked on the front end implementation, as well as writing the bash script which allows users to use GitBetter as a CLI.</p>
+    <ul>
+    <li style="width:33%"><p class="gif-header">Landing page</p> 
+    <img style="width:95%" src="https://media.giphy.com/media/fyd0m632KwJ3QBUQQR/giphy.gif" /></li>
+     <li style="width:33%"><p class="gif-header">Home page</p> 
+    <img style="width:95%" src="../assets/img/gitbetter-home.png" class="buzzfeed-quiz"/></li>
+     <li style="width:33%"><p class="gif-header">Command help</p> 
+    <img style="width:95%" src="../assets/img/gitbetter-help.png" class="buzzfeed-quiz"/></li>
+    </ul>
+    <h5>Some details about the project architecture...</h5>
+  <ul class="front-end">
+      <li>Written using Vue</li>
+      <li>Desktop application using Electron</li>
+      <li>Command line functionality (separate from the desktop app) is a bash script</li>
+  </ul>
+  </div>
+  <div class="tempo">
+    <h2>DDHI Visualizations</h2>
+    <p>I've been working for the Dartmouth Digital History Initiative since January 2019, and my role has evolved from tagging entities in interviews to researching and developing a timeline tool for our interview data as a Neukom Scholar at Dartmouth College (see ISP tab for more information about this project). I designed my 3D timeline in Adobe, and created it using Web Components. You can try out the timeline tool <a href="http://ddhi-timelines.surge.sh/">here</a>. It's still a work in progress, but was a part of a presentation at the Oral History Association annual meeting this year!</p>
+    <ul>
+    <li><p class="gif-header">Narrative vs. Chronological</p> 
+    <img src="https://media.giphy.com/media/jyNneVmy065FxxgPQQ/giphy.gif" /></li>
+    <li><p class="gif-header">Chronological</p>
+    <img src="https://media.giphy.com/media/7bZ2pVIImWtxwTe8qh/giphy.gif"/></li>
+    </ul>
+    <h5>Some details about the project architecture...</h5>
+  <ul class="front-end">
+      <li>Created using Web Components to be compatible with previos work by Agile Humanities (previous developers of the site)</li>
+      <li>Uses AnyChart to make timelines</li>
+      <li>Gets dates from database created by Agile</li>
+  </ul>
   </div>
   <div class="tempo">
     <h2>Tempo</h2>

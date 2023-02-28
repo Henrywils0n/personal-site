@@ -17,31 +17,36 @@ export default {
             honors: [
                 {
                 id: 0,
-                jobTitle: '3 time recipient of the Dartmouth Junior Scholars Grant for $1000',
+                jobTitle: 'Recipient of the Neukom Scholars Grant to pursue research in novel computing methods in the digital humanities for $1000',
                 year: 2020,
                 },
                 {
                 id: 1,
-                jobTitle: 'Recipient of the John Abyss Family Business Association Scholarship for 3000$',
-                year: 2020
+                jobTitle: 'Three time recipient of the Dartmouth Junior Scholars Grant for $1000',
+                year: 2020,
                 },
                 {
                 id: 2,
+                jobTitle: 'Recipient of the John Abyss Family Business Association Scholarship for $3000',
+                year: 2020
+                },
+                {
+                id: 3,
                 jobTitle: 'Two time recipient of the Dartmouth Sophomore Scholars Grant for $1000',
                 year: 2020,
                 },
                 {
-                id: 3,
+                id: 4,
                 jobTitle: 'CANASA Scholarship Recipient',
                 year: 2019,
                 },
                 {
-                id: 3,
+                id: 5,
                 jobTitle: 'Top of Graduating Class medal recipient (high school)',
                 year: 2018,
                 },
                 {
-                id: 4,
+                id: 6,
                 jobTitle: 'Awards for excellence in History, Math, and Physics (high school)',
                 year: 2018,
                 },

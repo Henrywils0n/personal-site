@@ -9,6 +9,11 @@
         <p v-for="source in this.article.sources" :key="source">
             {{ source }}
         </p>
+        <div v-if="article.subtitle === 'Week 5 Reflection'">
+            <h6>Design drafts</h6>
+            <iframe width="663.9" height="352.8" src="https://xd.adobe.com/embed/30101f62-8e43-46af-b9d8-7d24d64131b8-6543/" frameborder="0" allowfullscreen></iframe>
+            <iframe width="663.9" height="352.8" src="https://xd.adobe.com/embed/22b3119e-b0df-47c5-b2ed-6d127ea94368-77e0/" frameborder="0" allowfullscreen></iframe>
+        </div>
     </div>
 </template>
 

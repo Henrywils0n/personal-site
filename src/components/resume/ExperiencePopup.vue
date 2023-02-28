@@ -9,13 +9,7 @@
                 <a :href="item.website" target=”_blank” class="company-link">Company site</a>
             </div>
             <div class="modal-right">
-                <button
-                type="button"
-                class="btn-close"
-                @click="close"
-                >
-                X
-                </button>
+                <i @click="close" class="fas fa-window-close btn-close"></i>
                 <div class="job-block">
                     <h2 class="title"> {{ this.item.jobTitle }} </h2>
                     <h5 class="duration">{{ this.item.duration }}</h5>
@@ -115,20 +109,28 @@ export default {
       width: 300px;
   }
 
+  .company-link { 
+      color: rgb(47, 67, 121);
+  }
+
   .company-name {
       margin-top: 1.75rem;
   }
 
   .btn-close {
     border: none;
-    font-size: 50px;
-    padding: 0 20px 0 20px;
+    font-size: 40px;
+    padding-left: 20px;
     margin-right: 0;
     margin-left: auto;
     cursor: pointer;
-    font-weight: bold;
-    color: black;
-    background: transparent;
+    color: rgb(65, 65, 65);
+    transition-duration: 0.3s;
+
+  }
+
+  .btn-close:hover{
+    color: rgb(17, 17, 17);
   }
 
   .additional-block {

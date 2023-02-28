@@ -5,7 +5,7 @@
         <div class="contact-card">
             <div class="display"><i class="fas fa-envelope-square contact"></i><p>ediewilson13@gmail.com</p></div>
             <div class="display"><i class="fas fa-phone contact"></i><p>603-484-3709</p></div>
-            <div class="display"><i class="fas fa-home contact"></i><p>4714 Hinman<br>Hanover, NH, 03755</p></div>
+            <div class="display"><i class="fas fa-home contact"></i><p>Marina District<br>San Francisco, CA, 94123</p></div>
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@ export default {
             school: "Dartmouth College",
             graduationYear: 2022,
             degree: "BA - Computer Science major, Environmental Science Minor",
-            statement: "Computer science student-athlete at Dartmouth College. Looking for an internship in a software engineering or web development position to put my training to work in an exciting industry.",
+            statement: "Fullstack software engineer at Pinterest.",
         }
     },
 }
